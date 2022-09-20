@@ -2,7 +2,7 @@ class Solution {
     public int findLength(int[] nums1, int[] nums2) 
     {
         int ans =0;
-        int count=0;
+        // int count=0;
         int n1=nums1.length;
         int n2=nums2.length;
         
