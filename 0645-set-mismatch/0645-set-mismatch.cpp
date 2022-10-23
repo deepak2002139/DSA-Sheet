@@ -15,6 +15,7 @@ vector<int> findErrorNums(vector<int>& nums)
         if(y.second==2)
         {
             v.push_back(y.first);
+            // v.push_back(y.first+;
             break;
         }
     }
