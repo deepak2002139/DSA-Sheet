@@ -1,34 +1,32 @@
 class Solution 
 {
 public:
-    vector<int> findErrorNums(vector<int>& nums) 
+vector<int> findErrorNums(vector<int>& nums)
+{
+   int n=nums.size();
+    vector<int>v;
+    unordered_map<int,int>m;
+    for(int i=1;i<=n;i++)
+        m[i]=0;
+    for(auto x:nums)
+        m[x]++;
+    for(auto y:m)
     {
-        // vector<int>ans;
-        // map<int, int>mp;
-        // for(int i =0;i<nums.size();i++)
-        // {
-        //     mp[nums[i]]++;
-        //     if(mp[nums[i]]>1)
-        //     {
-        //         ans.push_back(nums[i]);
-        //         ans.push_back(nums[i]+1);
-        //     }
-        // }
-        // return ans;
-        int dup=-1,missing=-1;
-        for(auto itr:nums)
+        if(y.second==2)
         {
-            if(nums[abs(itr)-1]<0)
-                dup= abs(itr);
-            else
-                nums[abs(itr)-1]*=-1;
+            v.push_back(y.first);
+            break;
         }
-        for(int i=0;i<nums.size();i++)
-        {
-            if(nums[i]>0)
-                missing=i+1;
-        }
-        vector<int>ans={dup,missing};
-        return ans;
     }
+     for(auto y:m)
+    {
+        if(y.second==0)
+        {
+            v.push_back(y.first);
+            break;
+        }
+    }
+    return v;
+    
+}
 };
