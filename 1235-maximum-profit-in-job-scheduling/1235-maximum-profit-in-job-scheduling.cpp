@@ -1,8 +1,9 @@
 class Solution {
 private:
-  static  bool cmp(pair<pair<int,int>,int>& a,pair<pair<int,int>,int>& b){
+  static  bool cmp(pair<pair<int,int>,int>& a,pair<pair<int,int>,int>& b)
+  {
         return a.first.second<b.first.second; //sort acco. to end time 
-    }
+  }
     
     int checkoverlapping(vector<pair<pair<int,int>,int>>& v,int index)
     {
@@ -20,10 +21,12 @@ private:
         return idx;
     }
 public:
-    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit) {
+    int jobScheduling(vector<int>& startTime, vector<int>& endTime, vector<int>& profit)
+    {
         int n = startTime.size();
         vector<pair<pair<int,int>,int>> v(n);
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i++)
+        {
             v[i].first.first = startTime[i];
             v[i].first.second = endTime[i];
             v[i].second = profit[i];
@@ -31,7 +34,8 @@ public:
         sort(v.begin(),v.end(),cmp);
         vector<int> dp(n+1,0);
         dp[0] = v[0].second;
-        for(int i=1;i<n;i++){
+        for(int i=1;i<n;i++)
+        {
             int take = v[i].second;
             int idx = checkoverlapping(v,i); // finding the previous non - overlapping index 
 			//if exist then include in  take part
