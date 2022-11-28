@@ -6,25 +6,25 @@ public:
         vector<int>temp1;
         vector<int>temp2;
         // unordered_map<int,int>mp;
-        map<int,int>mp;
+        map<int,pair<int,int>>mp;
         int n=matches.size();
-        // for(int i=0;i<n;i++)
-        // {
-        //     mp[matches[0][0]]++;
-        //     mp[matches[0][1]]++;
-        // }
-        for(auto v : matches)
+        for(int i=0;i<n;i++)
         {
-            mp[v[0]]+=0;
-            mp[v[1]]++;
+            mp[matches[i][0]].first++;
+            mp[matches[i][1]].second++;
         }
+        // for(auto v : matches)
+        // {
+        //     mp[v[0]]+=0;
+        //     mp[v[1]]++;
+        // }
         for(auto it:mp)
         {
-            if(it.second==0)
+            if(it.second.second==0)
             {
                 temp1.push_back(it.first);
             }
-            if(it.second==1)
+            if(it.second.second==1)
             {
                 temp2.push_back(it.first);
             }
