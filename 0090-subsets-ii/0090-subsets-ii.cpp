@@ -3,13 +3,14 @@ class Solution
     public:
         void solve(set<vector < int>> &ans, int i, vector< int > res, vector< int > &nums)
         {
-            if (i == nums.size())
+            if (i>= nums.size())
             {
                 ans.insert(res);
                 return;
             }
-            solve(ans, i + 1, res, nums);
             res.push_back(nums[i]);
+            solve(ans, i + 1, res, nums);
+            res.pop_back();
             solve(ans, i + 1, res, nums);
             // res.pop_back();
         }
