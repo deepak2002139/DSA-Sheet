@@ -11,7 +11,7 @@ class Solution
             solve(ans, i + 1, res, nums);
             res.push_back(nums[i]);
             solve(ans, i + 1, res, nums);
-            res.pop_back();
+            // res.pop_back();
         }
     vector<vector < int>> subsetsWithDup(vector<int> &nums)
     {
