@@ -1,19 +1,56 @@
-class Solution {
-public:
-    void f(int idx , vector<int> &subset , vector<vector<int>> &ans , vector<int> &nums){
-        ans.push_back(subset);
-        for(int i=idx ; i<nums.size() ; i++){
-            if(i != idx && nums[i] == nums[i-1]) continue;
-            subset.push_back(nums[i]);
-            f(i+1 , subset , ans , nums);
-            subset.pop_back();
+class Solution
+{
+    public:
+        void solve(set<vector < int>> &ans, int i, vector< int > res, vector< int > &nums)
+        {
+            if (i == nums.size())
+            {
+                ans.insert(res);
+                return;
+            }
+            solve(ans, i + 1, res, nums);
+            res.push_back(nums[i]);
+            solve(ans, i + 1, res, nums);
+            res.pop_back();
         }
-    }
-    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>> ans;
-        vector<int> temp;
-        sort(nums.begin() , nums.end());
-        f(0 , temp , ans , nums);
-        return ans;
+    vector<vector < int>> subsetsWithDup(vector<int> &nums)
+    {
+        sort(nums.begin(),nums.end());
+        set<vector < int>> ans;
+        vector<vector < int>> ans2;
+        vector<int> res;
+        solve(ans, 0, res, nums);
+        for (auto it: ans)
+        {
+            ans2.push_back(it);
+        }
+        return ans2;
     }
 };
+// class Solution 
+// {
+// private:
+//     void helper(set<vector < int>> &s,vector<int> &v,vector<int>& nums,int i, int n)
+//     {      
+//         if(i == n){
+//             s.insert(v);
+//             return;
+//         }
+//         helper(s,v,nums,i+1,n);
+//         v.push_back(nums[i]);
+//         helper(s,v,nums,i+1,n);
+//         v.pop_back();    
+//     }
+// public:
+//     vector<vector < int>> subsetsWithDup(vector<int>& nums) {
+//         sort(nums.begin(),nums.end());
+//         vector<vector < int>> res;
+//         vector<int> v;
+//         set<vector < int>> s;
+//         helper(s,v,nums,0,nums.size());
+//         for(auto x : s){
+//             res.push_back(x);
+//         }
+//         return res;
+//     }
+// };
