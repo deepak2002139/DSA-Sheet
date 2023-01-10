@@ -3,7 +3,7 @@ class Solution
 public:
     void solve(vector<vector<int>>&ans, vector<int>&nums,int idx)
     {
-        if(idx==nums.size())
+        if(idx==nums.size()-1)
         {
            ans.push_back(nums);
             return;
