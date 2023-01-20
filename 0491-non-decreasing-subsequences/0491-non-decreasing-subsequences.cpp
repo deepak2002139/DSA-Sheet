@@ -12,7 +12,7 @@ class Solution
                 }
                 return;
             }
-            if(res.empty()||res[res.size()-1]<=nums[i])
+            if(res.empty()||res.back()<=nums[i])
             {
             res.push_back(nums[i]);/*very important line i am not  adding this element thats why showing me error multiple time be carefull next time.*/
             solve(res, nums, ans, i + 1);
